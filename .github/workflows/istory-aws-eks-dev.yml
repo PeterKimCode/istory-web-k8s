@@ -133,7 +133,8 @@ jobs:
           sudo mv kustomize /usr/local/bin
       - name: kustomize update image yaml
         run: |
-          kustomize edit set image istory=dagntong76/istory:${{ github.run_number }}
+          cd overlay/aws-dev
+          kustomize edit set image istory=PeterKimCode/istory-app:${{ github.run_number }}
       - name: push yaml
         run: |
           git config --global user.name 'github-actions[bot]'
