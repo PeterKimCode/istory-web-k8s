@@ -96,6 +96,7 @@ jobs:
       - name: 9.Docker Push
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/istory:${{ env.DOCKER_TAG }}
+
       - name: 10.서비스 리포지토리 체크아웃
         uses: actions/checkout@v4
         with:
@@ -134,7 +135,7 @@ jobs:
       - name: kustomize update image yaml
         run: |
           cd overlay/aws-dev
-          kustomize edit set image istory=litpr/istory:${{ github.run_number }}
+          kustomize edit set image litpr/istory=litpr/istory:${{ github.run_number }}
       - name: push yaml
         run: |
           git config --global user.name 'github-actions[bot]'
